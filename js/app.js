@@ -21,7 +21,7 @@ createListItem();
 function getSectionPosition(elem)
 {
     let secPosition = elem.getBoundingClientRect();
-    return (secPosition.top );
+    return (secPosition);
 };
 
 //but section on active class
@@ -29,7 +29,7 @@ function activeClass()
 {
     for( section of sections)
     {
-        if( getSectionPosition(section) >=0 && !section.hasAttribute('your-active-class') )
+        if( getSectionPosition(section).top >=-10 && getSectionPosition(section).top <= 120 && !section.hasAttribute('your-active-class') )
         {
             section.classList.add('your-active-class');
         }
