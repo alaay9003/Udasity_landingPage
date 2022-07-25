@@ -2,6 +2,9 @@
 const navigation = document.getElementById("navbar__list");
 const sections = Array.from(document.querySelectorAll("section"));
 const upButton = document.getElementById('button_up');
+//const lists = Array.from(document.querySelectorAll('li'));
+
+let isScrolling;
 
 //create list item based on numbers of sections
 function createListItem()
@@ -16,7 +19,6 @@ function createListItem()
 };
 
 createListItem();
-
 //Detect the section position 
 function getSectionPosition(elem)
 {
@@ -27,11 +29,24 @@ function getSectionPosition(elem)
 //but section on active class
 function activeClass()
 {
+    //const lists = Array.from(document.querySelectorAll('li'));
+    const links = Array.from(document.querySelectorAll('ul li a'));
     for( section of sections)
     {
         if( getSectionPosition(section).top >=-10 && getSectionPosition(section).top <= 120 && !section.hasAttribute('your-active-class') )
         {
             section.classList.add('your-active-class');
+            for(link of links)
+            {
+                if( section.id == link.getAttribute('data-nav'))
+                {
+                    link.classList.add('list_active');
+                }
+                else
+                {
+                    link.classList.remove('list_active');
+                }
+            } 
         }
         else
         {
@@ -40,6 +55,8 @@ function activeClass()
     }
 };
 
+
+//document.addEventListener('scroll',active_bar);
 document.addEventListener('scroll',activeClass);
 
 //make smooth scroling
@@ -48,7 +65,7 @@ navigation.addEventListener('click' , (evet) => {
    if(evet.target.dataset.nav)
     {
         document.getElementById(evet.target.dataset.nav).scrollIntoView({behavior:"smooth"});
-        console.log(evet.target.dataset)
+       
     }
 });
 
@@ -74,7 +91,7 @@ upButton.addEventListener('click',()=>{
 });
 
 //hide and display navigation bar
-let isScrolling;
+
 window.addEventListener('scroll', ()=>{
     navigation.style.display = "block"
     clearTimeout(isScrolling)

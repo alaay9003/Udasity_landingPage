@@ -81,7 +81,7 @@ section {
     padding: 1em;
     font-weight: bold;
     text-decoration: none;
-    color: #000;
+    color: rgb(117, 121, 0);
 }
 
 .navbar__menu .menu__link:hover {
@@ -89,6 +89,8 @@ section {
     color: #fff;
     transition: ease 0.3s all;
 }
+
+
 
 /* Header Styles */
 .page__header {
@@ -110,6 +112,12 @@ section {
     color: #fff;
 }
 
+.list_active
+{
+    background: rgb(6, 9, 14);
+    color: rgb(255, 255, 255);
+    transition: ease 0.3s all;
+}
 
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
